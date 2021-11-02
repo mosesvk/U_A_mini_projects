@@ -11,7 +11,7 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  useEffect(() => {
+  const identifier = useEffect(() => {
     setTimeout(() => {
       console.log('Checking for validity')
       setFormIsValid(
@@ -21,6 +21,7 @@ const Login = (props) => {
     
     return () => {
       console.log('CLEANUP')
+      clearTimeout(identifier)
     }
 
   }, [enteredEmail, enteredPassword])
