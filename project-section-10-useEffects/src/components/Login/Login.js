@@ -53,7 +53,7 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes('@'));
+    setEmailIsValid(enteredEmail.value.includes('@'));
   };
 
   const validatePasswordHandler = () => {
