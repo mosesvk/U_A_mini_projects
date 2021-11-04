@@ -78,9 +78,9 @@ const Login = (props) => {
       val: event.target.value
     })
 
-    setFormIsValid(
-      event.target.value.trim().length > 6 && passwordState.isValid
-    );
+    // setFormIsValid(
+    //   event.target.value.trim().length > 6 && passwordState.isValid
+    // );
   };
 
   const passwordChangeHandler = (event) => { 
@@ -89,9 +89,9 @@ const Login = (props) => {
       VAL: event.target.value
     })
 
-    setFormIsValid(
-      event.target.value.trim().length > 6 && emailState.isValid
-    );
+    // setFormIsValid(
+    //   event.target.value.trim().length > 6 && emailState.isValid
+    // );
   };
 
   const validateEmailHandler = (state, action) => {
