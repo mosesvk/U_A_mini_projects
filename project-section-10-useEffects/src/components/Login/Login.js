@@ -68,7 +68,7 @@ const Login = (props) => {
     return () => {
       console.log('CLEANUP')
       clearTimeout(identifier)
-    }
+    } 
 
   }, [emailState, passwordState])
 
