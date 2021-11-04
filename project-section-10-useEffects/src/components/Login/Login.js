@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import classes from "./Login.module.scss";
 import Button from "../UI/Button/Button";
 
+// REDUCER fn's -------------------> 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
     return {
@@ -21,7 +22,6 @@ const emailReducer = (state, action) => {
     isValid: false,
   };
 };
-
 const passwordReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
     return { value: action.val, isValid: action.val.trim().length > 6 };
@@ -32,6 +32,8 @@ const passwordReducer = (state, action) => {
   return { value: '', isValid: false };
 };
 
+
+// MAIN COMPONENT - LOGIN ------------->
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState('');
   // const [emailIsValid, setEmailIsValid] = useState();
@@ -57,6 +59,7 @@ const Login = (props) => {
     };
   }, []);
 
+  // Destructuring the emailState & passwordState from the useReducers lines 44 and 49
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
