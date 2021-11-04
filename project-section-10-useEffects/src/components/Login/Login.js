@@ -95,7 +95,7 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = (state, action) => {
-    dispatchEmail({type: 'INPUT_BLUR',})
+    dispatchEmail({type: 'INPUT_BLUR'})
   };
 
   const validatePasswordHandler = () => {
