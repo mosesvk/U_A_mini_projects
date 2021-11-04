@@ -60,6 +60,7 @@ const Login = (props) => {
   }, []);
 
   // Destructuring the emailState & passwordState from the useReducers lines 44 and 49
+  // the ':' creates an alias name for inValid
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
