@@ -52,6 +52,8 @@ const Login = (props) => {
     isValid: null,
   });
 
+  const authCtx = useContext(AuthContext)
+
   useEffect(() => {
     console.log('EFFECT RUNNING');
 
@@ -64,8 +66,6 @@ const Login = (props) => {
   // the ':' creates an alias name for inValid
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
-
-  const authCtx = useContext(AuthContext)
 
   useEffect(() => {
     const identifier = setTimeout(() => {
