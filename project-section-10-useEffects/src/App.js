@@ -28,7 +28,6 @@ function App() {
   };
 
   return (
-    <React.Fragment>
       <AuthContext.Provider>
         <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
         <main>
@@ -36,7 +35,6 @@ function App() {
           {isLoggedIn && <Home onLogout={logoutHandler} />}
         </main>
       </AuthContext.Provider>
-    </React.Fragment>
   );
 }
 
