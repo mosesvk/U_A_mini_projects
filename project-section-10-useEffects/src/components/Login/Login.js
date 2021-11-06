@@ -115,9 +115,10 @@ const Login = (props) => {
     if (formIsValid) {
       authCtx.onLogin(emailState.value, passwordState.value);
     } else if (!emailIsValid) {
-      
+      // .activate is a functon inside of the INPUT component
+      emailInputRef.current.activate();
     } else {
-
+      passwordInputRef.current.activate();
     }
   };
 
