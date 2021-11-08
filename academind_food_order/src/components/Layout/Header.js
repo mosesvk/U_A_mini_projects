@@ -13,7 +13,10 @@ export const Header = (props) => {
         <HeaderCartButton />
       </header>
       <div className={classes['main-image']}>
-        <h1>Order Below</h1>
+        <div>
+          <h2></h2>
+          <button></button>
+        </div>
       </div>
     </Fragment>
   )
