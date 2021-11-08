@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 
-import logoCFP from '../../assets/CFP-cover-2.jpg'
+import logoCFP from '../../assets/cfp-cover-1.jpg'
 import HeaderCartButton from './HeaderCartButton'
 import classes from './Header.module.scss'
 
@@ -14,8 +14,7 @@ export const Header = (props) => {
       </header>
       <div className={classes['main-image']}>
         <div>
-          <h2></h2>
-          <button></button>
+          {/* <img src={logoCFP} alt='logo img' /> */}
         </div>
       </div>
     </Fragment>

@@ -1,14 +1,13 @@
 import React from 'react'
 
+import logoImg from '../../assets/cfp-cover-1.jpg'
 import classes from './MealsSummary.module.scss'
 
 const MealsSummary = () => {
   return (
-    <section className={classes.summary}>
-      <h2>Delicious Fried Pies</h2>
-      <p>Choose from our wide variety of Fried Pies</p>
-      <p>Each is cooked and baked with high-quality ingredients</p>
-    </section>
+    <div className={classes.summary}>
+      <image src={logoImg} alt='logo img' />
+    </div>
   )
 }
 
