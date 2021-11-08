@@ -7,12 +7,13 @@ import classes from './Header.module.scss'
 export const Header = (props) => {
   return (
     <Fragment>
+      <div className={classes.top}></div>
       <header className={classes.header}>
         <h1>Cheefa's Fried Pies</h1>
         <HeaderCartButton />
       </header>
       <div className={classes['main-image']}>
-        {/* <img src={logoCFP} alt='logo-img'/> */}
+        <h1>Order Below</h1>
       </div>
     </Fragment>
   )
