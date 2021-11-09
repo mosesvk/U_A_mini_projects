@@ -10,7 +10,7 @@ export const Header = (props) => {
       <div className={classes.top}></div>
       <header className={classes.header}>
         <h1>Cheefa's Fried Pies</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onShowCart}/>
       </header>
       <div className={classes['main-image']}>
         <div>
