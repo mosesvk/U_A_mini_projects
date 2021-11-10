@@ -14,6 +14,8 @@ const MealItemForm = (props) => {
     // This will always be a string so we will need the below code to convert to a string
     const enteredAmountNum = +enteredAmount;
 
+    console.dir(enteredAmount)
+
     if (
       enteredAmount.trim().length === 0 ||
       enteredAmountNum < 1 ||
