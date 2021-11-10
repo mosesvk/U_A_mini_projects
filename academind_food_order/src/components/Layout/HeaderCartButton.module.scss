@@ -2,39 +2,34 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color:#DDDDDD;
+  background-color:white;
   color: #333333;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem .5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 25px;
+  border-radius: 10px;
   font-weight: bold;
 }
 
 button:hover,
 button:active {
-  background-color:#f3fd64;
+  background-color:#c9aaaa;
   transition: .5s;
 }
 
 .icon {
-  width: 1.35rem;
+  width: 1.75rem;
   height: 1.35rem;
-  margin-right: 0.5rem;
 }
 
 .badge {
-  background-color: #ffbbbd ;
-  padding: 0.25rem 1rem;
-  border-radius: 25px;
-  margin-left: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 
 .button:hover .badge,
 .button:active .badge {
-  background-color: #f3fd64;
   transition: .5s;
 }
 
