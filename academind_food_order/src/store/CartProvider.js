@@ -1,4 +1,5 @@
 import {useReducer} from 'react'
+
 import CartContext from './cart-context'
 
 const defaultCartState = {
@@ -15,6 +16,8 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount
     }
   }
+
+  return defaultCartState
 
 }
 

@@ -28,7 +28,7 @@ const MealItem = (props) => {
         <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
       </div>
     </li>
-  )
-}
+  );
+};
 
 export default MealItem
