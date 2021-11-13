@@ -4,6 +4,12 @@
   padding: 0;
   max-height: 20rem;
   overflow: scroll;
+  background: gainsboro;
+  padding: 15px;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
 }
 
 .total {
