@@ -63,5 +63,7 @@
 .cart-item button:hover,
 .cart-item button:active {
   background-color: $secondary;
+  border: 1px solid $secondary;
+  transition: .25s;
   color: black;
 }
