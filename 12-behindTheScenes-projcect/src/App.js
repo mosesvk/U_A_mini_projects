@@ -14,7 +14,7 @@ function App() {
     if (allowToggle) {
       setShowParagraph((prevShowParagraph) => !prevShowParagraph)
     }
-  }, [])
+  }, [allowToggle])
 
   const allowToggleHandler = () => {
     setAllowToggle(true)
