@@ -1,6 +1,6 @@
-const {useState, useEffect}
+import {useState} from 'react'
 
-const useHttp = (requestConfig) => {
+const useHttp = (requestConfig, applyData) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -9,6 +9,7 @@ const useHttp = (requestConfig) => {
     setError(null);
     try {
       const response = await fetch(
+        // reusablility requestConfig from parameter
         requestConfig.url, {
           method: requestConfig.method,
           headers: requestConfig.headers,
@@ -21,14 +22,9 @@ const useHttp = (requestConfig) => {
       }
 
       const data = await response.json();
+        // reusability applyData from parameter
+      applyData(data)
 
-      const loadedTasks = [];
-
-      for (const taskKey in data) {
-        loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-      }
-
-      setTasks(loadedTasks);
     } catch (err) {
       setError(err.message || 'Something went wrong!');
     }
