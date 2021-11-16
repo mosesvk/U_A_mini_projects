@@ -9,6 +9,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
+    // We need the useCallback to make sure to not loop the UseEffect() on line 43. 
+    // If not for it, we would go into a continuous loop of rerendering
   const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true)
     setError(null)
@@ -52,7 +54,7 @@ function App() {
       }
     });
     const data = await response.json();
-    console.log(data)
+    alert('Successfully Added to the Database')
   }
 
   let content = <h2>Found No Movies</h2>
