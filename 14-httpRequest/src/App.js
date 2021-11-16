@@ -9,7 +9,6 @@ function App() {
   const fetchMoviesHandler = () => {
     fetch('https://swapi.dev/api/films')
       .then(res => {
-        console.log(res)
         return res.json()
       })
       .then(data => {
