@@ -29,7 +29,13 @@ const useHttp = (requestConfig, applyData) => {
       setError(err.message || 'Something went wrong!');
     }
     setIsLoading(false);
-  };
+  } // sendRequest function
+
+  return {
+    isLoading, 
+    error,
+    sendRequest
+  }
 }
 
 export default useHttp
