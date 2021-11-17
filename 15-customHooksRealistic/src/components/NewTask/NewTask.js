@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Section from "../UI/Section";
 import TaskForm from "./TaskForm";
 import useHttp from "../../hooks/use-http";
@@ -7,14 +5,15 @@ import useHttp from "../../hooks/use-http";
 const NewTask = (props) => {
   const { isLoading, error, sendRequest } = useHttp();
 
-  const createTask = (taskText, taskData) => {
-    const generatedId = taskData.name; // firebase-specific => "name" contains generated id
-    const createdTask = { id: generatedId, text: taskText };
-
-    props.onAddTask(createdTask);
-  };
-
   const enterTaskHandler = async (taskText) => {
+
+    const createTask = (taskData) => {
+      const generatedId = taskData.name; // firebase-specific => "name" contains generated id
+      const createdTask = { id: generatedId, text: taskText };
+  
+      props.onAddTask(createdTask);
+    };
+
     sendRequest(
       {
         url: "https://react-http-b68b7-default-rtdb.firebaseio.com/tasks.json",
@@ -22,7 +21,8 @@ const NewTask = (props) => {
         headers: { "Content-Type": "application/json" },
         body: { text: taskText },
       },
-      createTask.bind(null, taskText) // We bind because on line 10, we need two different parameters to configure in createTask() which only 
+      createTask
+      //createTask.bind(null, taskText) // If we do NOT nest the createTask() inside enterTaskHandler()...We bind because on line 10, we need two different parameters to configure in createTask() which only 
     );
   }; 
 
