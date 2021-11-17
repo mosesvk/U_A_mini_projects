@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef(); 
+  const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
+  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  const [enteredNameTouch, setEnteredNameTounch] = useState(false);
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -30,7 +31,11 @@ const SimpleInput = (props) => {
     nameInputRef.current.value = ""; // AVOID DOING THIS... DON'T MANIPULATE DOM... this is the downside to refs
   };
 
-  const nameInputClasses = enteredNameIsValid ? 'form-control' : 'form-control invalid'
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouch;
+
+  const nameInputClasses = nameInputIsInvalid
+    ? "form-control invalid"
+    : "form-control";
 
   return (
     <form onSubmit={formSubmissionHandler}>
@@ -43,7 +48,9 @@ const SimpleInput = (props) => {
           ref={nameInputRef}
           value={enteredName}
         />
-        {!enteredNameIsValid  && <p className='error-text'>Name must not be empty</p>}
+        {nameInputIsInvalid && (
+          <p className="error-text">Name must not be empty</p>
+        )}
       </div>
       <div className="form-actions">
         <button>Submit</button>
