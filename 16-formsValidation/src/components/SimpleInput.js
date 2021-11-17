@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
+  const nameInputRef = useRef(); 
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
 
@@ -30,9 +30,11 @@ const SimpleInput = (props) => {
     nameInputRef.current.value = ""; // AVOID DOING THIS... DON'T MANIPULATE DOM... this is the downside to refs
   };
 
+  const nameInputClasses = enteredNameIsValid ? 'form-control' : 'form-control invalid'
+
   return (
     <form onSubmit={formSubmissionHandler}>
-      <div className="form-control">
+      <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
           type="text"
