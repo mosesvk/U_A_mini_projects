@@ -1,14 +1,14 @@
-import useInput from "../hooks/use-input";
+import useInput from '../hooks/use-input';
 
 const SimpleInput = (props) => {
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
     hasError: nameInputHasError,
-    valueChangeHandler: nameChangeHandler,
+    valueChangeHandler: nameChangedHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== '');
 
   const {
     value: enteredEmail,
@@ -16,8 +16,8 @@ const SimpleInput = (props) => {
     hasError: emailInputHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: resetEmailInput
-  } = useInput(value => value.includes('@')); 
+    reset: resetEmailInput,
+  } = useInput((value) => value.includes('@'));
 
   let formIsValid = false;
 
@@ -26,54 +26,56 @@ const SimpleInput = (props) => {
   }
 
   const formSubmissionHandler = (event) => {
-    event.preventDefault(); // This stops the browsers default behavior in submitting a form which is sending an HTTP request to a server (which we don't have at the moment)
+    event.preventDefault();
 
     if (!enteredNameIsValid) {
       return;
-    } // this if statement will Stop the rest of the code from executing if we click on submit and there is nothing typed. To prevent from console.logging a '' blank or setting the enteredName value to a blank.
+    }
 
+    console.log(enteredName);
+
+    // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
     resetNameInput();
     resetEmailInput();
-
-  }; // formSubmissionHandler()
+  };
 
   const nameInputClasses = nameInputHasError
-    ? "form-control invalid"
-    : "form-control";
+    ? 'form-control invalid'
+    : 'form-control';
 
   const emailInputClasses = emailInputHasError
-    ? "form-control invalid"
-    : "form-control";
+    ? 'form-control invalid'
+    : 'form-control';
 
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className={nameInputClasses}>
-        <label htmlFor="name">Your Name</label>
+        <label htmlFor='name'>Your Name</label>
         <input
-          type="text"
-          id="name"
-          onChange={nameChangeHandler}
+          type='text'
+          id='name'
+          onChange={nameChangedHandler}
           onBlur={nameBlurHandler}
           value={enteredName}
         />
         {nameInputHasError && (
-          <p className="error-text">Name must not be empty</p>
+          <p className='error-text'>Name must not be empty.</p>
         )}
       </div>
       <div className={emailInputClasses}>
-        <label htmlFor="email">Your Email</label>
+        <label htmlFor='email'>Your E-Mail</label>
         <input
-          type="email"
-          id="email"
+          type='email'
+          id='email'
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
           value={enteredEmail}
         />
-        {emailInputHasError   && (
-          <p className="error-text">Please Enter Valid E-Mail</p>
+        {emailInputHasError && (
+          <p className='error-text'>Please enter a valid email.</p>
         )}
       </div>
-      <div className="form-actions">
+      <div className='form-actions'>
         <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
