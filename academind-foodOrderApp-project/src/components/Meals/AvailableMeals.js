@@ -1,38 +1,38 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.scss";
 
-const DUMMY_ITEMS = [
-  {
-    id: "m1",
-    name: "Beef Mushroom",
-    description: "100% Beef with mushroom and sauce",
-    price: 5.99,
-  },
-  {
-    id: "m2",
-    name: "the Cowboy",
-    description: "Beef & Swiss",
-    price: 5.99,
-  },
-  {
-    id: "m3",
-    name: "Nutella Banana",
-    description: "Nutella with Banana",
-    price: 3.99,
-  },
-  {
-    id: "m4",
-    name: "Pineapple",
-    description: "Fresh Pineapple",
-    price: 3.99,
-  },
-];
-
 const AvailableMeals = () => {
-  const itemsList = DUMMY_ITEMS.map((item) => (
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchItemsBackEnd = async () => {
+      const response = await fetch(
+        "https://react-http-b68b7-default-rtdb.firebaseio.com/items.json"
+      );
+      const responseData = await response.json();
+
+      const loadedItems = [];
+
+      for (const key in responseData) {
+        loadedItems.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        });
+      } // for in loop responseData
+
+      setProducts(loadedItems)
+
+    }; // fetchItemsBackEnd
+
+    fetchItemsBackEnd();
+  }, []); 
+
+  const itemsList = products.map((item) => (
     <MealItem
       key={item.id}
       id={item.id}
