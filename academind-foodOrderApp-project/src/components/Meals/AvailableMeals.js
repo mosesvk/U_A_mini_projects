@@ -6,6 +6,7 @@ import classes from "./AvailableMeals.module.scss";
 
 const AvailableMeals = () => {
   const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchItemsBackEnd = async () => {
@@ -26,11 +27,20 @@ const AvailableMeals = () => {
       } // for in loop responseData
 
       setProducts(loadedItems)
+      setIsLoading(false)
 
     }; // fetchItemsBackEnd
 
     fetchItemsBackEnd();
-  }, []); 
+  }, []); // useEffect
+
+  if (isLoading) {
+    return (
+      <section className={classes.MealsLoading}>
+        <h2>Loading...</h2>
+      </section>
+    )
+  }
 
   const itemsList = products.map((item) => (
     <MealItem
