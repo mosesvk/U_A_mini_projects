@@ -4,7 +4,7 @@ const SimpleInput = (props) => {
   const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
-  const [enteredNameTouch, setEnteredNameTounch] = useState(false);
+  const [enteredNameTouch, setEnteredNameTouch] = useState(false);
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -12,6 +12,8 @@ const SimpleInput = (props) => {
 
   const formSubmissionHandler = (event) => {
     event.preventDefault(); // This stops the browsers default behavior in submitting a form which is sending an HTTP request to a server (which we don't have at the moment)
+
+    setEnteredNameTouch(true)
 
     if (enteredName.trim() === "") {
       //.trim() takes away whitespace at beginning and end
