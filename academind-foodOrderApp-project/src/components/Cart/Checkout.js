@@ -1,7 +1,8 @@
-import classes from './Checkout.module.css';
+import classes from './Checkout.module.scss';
 
 const Checkout = (props) => {
   const confirmHandler = (event) => {
+    // prevent the default browser function to send an HTTP request. 
     event.preventDefault();
   };
 
@@ -27,6 +28,7 @@ const Checkout = (props) => {
         <button type='button' onClick={props.onCancel}>
           Cancel
         </button>
+        <button type='button' onClick={props.onCancel}>Cancel</button>
         <button className={classes.submit}>Confirm</button>
       </div>
     </form>
