@@ -8,18 +8,31 @@ const SimpleInput = (props) => {
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
+
+    if (enteredName.trim() !== "") {
+      //.trim() takes away whitespace at beginning and end
+      setEnteredNameIsValid(true);
+    } 
   };
+
+  const nameInputBlurHandler = (event) => {
+    setEnteredNameTouch(true);
+
+    if (enteredName.trim() === "") {
+      //.trim() takes away whitespace at beginning and end
+      setEnteredNameIsValid(false);
+    } 
+  }
 
   const formSubmissionHandler = (event) => {
     event.preventDefault(); // This stops the browsers default behavior in submitting a form which is sending an HTTP request to a server (which we don't have at the moment)
 
     setEnteredNameTouch(true)
 
-    if (enteredName.trim() === "") {
-      //.trim() takes away whitespace at beginning and end
+    if (enteredName.trim() === "") { 
       setEnteredNameIsValid(false);
       return;
-    } // this if statement will Stop the rest of the code from executing if we click on submit and there is nothing typed. To prevent from console.logging a '' blank or setting the enteredName value to a blank.
+    }// this if statement will Stop the rest of the code from executing if we click on submit and there is nothing typed. To prevent from console.logging a '' blank or setting the enteredName value to a blank.
 
     setEnteredNameIsValid(true);
 
@@ -47,6 +60,7 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
           ref={nameInputRef}
           value={enteredName}
         />
