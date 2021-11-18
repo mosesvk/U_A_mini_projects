@@ -5,14 +5,20 @@ import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.scss";
 
 const AvailableMeals = () => {
-  const [products, setProducts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchItemsBackEnd = async () => {
       const response = await fetch(
-        "https://react-http-b68b7-default-rtdb.firebaseio.com/items.json"
+        "https://react-http-b68b7-default-rtdb.firebaseio.com/items"
       );
+
+        if (!response.ok) {
+          throw new Error('Something Went Wrong')
+        }
+
       const responseData = await response.json();
 
       const loadedItems = [];
@@ -31,13 +37,25 @@ const AvailableMeals = () => {
 
     }; // fetchItemsBackEnd
 
-    fetchItemsBackEnd();
+    fetchItemsBackEnd().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message)
+    })
+
   }, []); // useEffect
 
   if (isLoading) {
     return (
       <section className={classes.MealsLoading}>
         <h2>Loading...</h2>
+      </section>
+    )
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes.MealsError}>
+        <h2>{httpError}</h2>
       </section>
     )
   }
