@@ -1,27 +1,19 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameTouch, setEnteredNameTouch] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() !== ''
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouch;
+
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
-
-    if (enteredName.trim() !== "") {
-      //.trim() takes away whitespace at beginning and end
-      setEnteredNameIsValid(true);
-    } 
   };
 
   const nameInputBlurHandler = (event) => {
     setEnteredNameTouch(true);
-
-    if (enteredName.trim() === "") {
-      //.trim() takes away whitespace at beginning and end
-      setEnteredNameIsValid(false);
-    } 
   }
 
   const formSubmissionHandler = (event) => {
@@ -29,24 +21,14 @@ const SimpleInput = (props) => {
 
     setEnteredNameTouch(true)
 
-    if (enteredName.trim() === "") { 
-      setEnteredNameIsValid(false);
+    if (!enteredNameIsValid) { 
       return;
-    }// this if statement will Stop the rest of the code from executing if we click on submit and there is nothing typed. To prevent from console.logging a '' blank or setting the enteredName value to a blank.
+    }// this if statement will Stop the rest of the code from executing if we click on submit and there is nothing typed. To prevent from console.logging a '' blank or setting the enteredName value to a blank. 
 
-    setEnteredNameIsValid(true);
-
-    // useState() is good to use to validate for every key stroke and is cleaner to code
-    console.log(enteredName);
     setEnteredName("");
-
-    // useRef() would be useful if trying to validate on every submit
-    const enteredRefName = nameInputRef.current.value; // useRef(nameInputRef) is an object that has current as one of its properties to access the current.value
-    console.log(enteredRefName);
-    nameInputRef.current.value = ""; // AVOID DOING THIS... DON'T MANIPULATE DOM... this is the downside to refs
-  };
-
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouch;
+    setEnteredNameTouch(false)
+    
+  } // formSubmissionHandler()
 
   const nameInputClasses = nameInputIsInvalid
     ? "form-control invalid"
@@ -61,7 +43,6 @@ const SimpleInput = (props) => {
           id="name"
           onChange={nameInputChangeHandler}
           onBlur={nameInputBlurHandler}
-          ref={nameInputRef}
           value={enteredName}
         />
         {nameInputIsInvalid && (
