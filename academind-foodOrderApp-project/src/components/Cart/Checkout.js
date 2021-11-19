@@ -9,16 +9,23 @@ const isNotFiveChars = (value) => value.trim().length !== 5;
 
 const Checkout = (props) => {
   const {
-    value: { enteredName, enteredStreet, enteredCity },
-    isValid: { enteredNameIsValid, enteredStreetIsValid, enteredCityIsValid },
-    hasError: { nameInputHasError, streetInputHasError, cityInputHasError },
-    valueChangeHandler: {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: 
       nameChangedHandler,
+    inputBlurHandler: nameBlurHandler ,
+    reset: resetNameInput ,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: enteredStreet,
+    isValid: enteredStreetIsValid,
+    hasError: streetInputHasError,
+    valueChangeHandler: 
       streetChangeHandler,
-      cityChangeHandler,
-    },
-    inputBlurHandler: { nameBlurHandler, streetBlurHandler, cityBlurHandler },
-    reset: { resetNameInput, resetStreetInput, resetCityBlurHandler },
+    inputBlurHandler: streetBlurHandler ,
+    reset: resetStreetInput ,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -27,8 +34,18 @@ const Checkout = (props) => {
     hasError: postalCodeHasError,
     valueChangeHandler: postalCodeChangeHandler,
     inputBlurHandler: postalCodeBlurHandler,
-    reset: resetPostalCode,
+    reset: resetPostalCodeInput,
   } = useInput((value) => value.trim().length !== 5);
+
+  const {
+    value: enteredCity,
+    isValid: enteredCityIsValid,
+    hasError: cityInputHasError,
+    valueChangeHandler: 
+      cityChangeHandler,
+    inputBlurHandler: cityBlurHandler ,
+    reset: resetCityInput ,
+  } = useInput((value) => value.trim() !== "");
 
   let formIsValid = false;
 
@@ -55,8 +72,8 @@ const Checkout = (props) => {
 
     resetNameInput();
     resetStreetInput();
-    resetCityBlurHandler();
-    resetPostalCode();
+    resetCityInput();
+    resetPostalCodeInput();
   }; // confirmHandler()
 
   const nameControlClasses = `${classes.control} ${
@@ -74,6 +91,9 @@ const Checkout = (props) => {
   const postalCodeControlClasses = `${classes.control} ${
     streetInputHasError ? classes.invalid : ""
   }`
+
+  console.log(nameInputHasError)
+
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>

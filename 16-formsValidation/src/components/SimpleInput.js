@@ -54,7 +54,7 @@ const SimpleInput = (props) => {
           type='text'
           id='name'
           onChange={nameChangedHandler}
-          onBlur={nameBlurHandler}
+          onBlur={console.log('hit onBlur')}
           value={enteredName}
         />
         {nameInputHasError && (

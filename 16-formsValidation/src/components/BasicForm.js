@@ -53,6 +53,8 @@ const BasicForm = (props) => {
   const lastNameClasses = lastNameHasError ? 'form-control invalid' : 'form-control';
   const emailClasses = emailHasError ? 'form-control invalid' : 'form-control';
 
+  console.log(firstNameHasError)
+
   return (
     <form onSubmit={submitHandler}>
       <div className='control-group'>

@@ -1,9 +1,9 @@
-import {useReducer} from 'react'
+import { useReducer } from 'react';
 
 const initialInputState = {
-  value: '', 
+  value: '',
   isTouched: false,
-}
+}; 
 
 const inputStateReducer = (state, action) => {
   if (action.type === 'INPUT') {
@@ -16,11 +16,11 @@ const inputStateReducer = (state, action) => {
     return { isTouched: false, value: '' };
   }
   return inputStateReducer;
-}
+};
 
 const useInput = (validateValue) => {
   const [inputState, dispatch] = useReducer(
-    inputStateReducer, 
+    inputStateReducer,
     initialInputState
   );
 
@@ -40,14 +40,13 @@ const useInput = (validateValue) => {
   };
 
   return {
-    value: inputState.value, 
-    isValid: valueIsValid, 
-    hasError, 
+    value: inputState.value,
+    isValid: valueIsValid,
+    hasError,
     valueChangeHandler,
     inputBlurHandler,
     reset,
-  }
-
+  };
 };
 
-export default useInput
+export default useInput;
