@@ -3,7 +3,7 @@ import classes from "./Checkout.module.scss";
 
 // helper functions
 const isNotEmpty = (value) => value.trim() !== "";
-const isNotFiveChars = (value) => value.trim().length !== 5;
+const isFiveChars = (value) => value.trim().length === 5;
 
 const Checkout = (props) => {
   const {
@@ -31,7 +31,7 @@ const Checkout = (props) => {
     valueChangeHandler: postalCodeChangeHandler,
     inputBlurHandler: postalCodeBlurHandler,
     reset: resetPostalCodeInput,
-  } = useInput(isNotFiveChars);
+  } = useInput(isFiveChars);
 
   const {
     value: enteredCity,
@@ -68,8 +68,6 @@ const Checkout = (props) => {
     resetPostalCodeInput();
 
   }; // confirmHandler()
-
-  console.log(postalCodeBlurHandler)
 
   const nameControlClasses = `${classes.control} ${
     nameInputHasError ? classes.invalid : ""
