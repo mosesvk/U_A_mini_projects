@@ -91,8 +91,6 @@ const Checkout = (props) => {
     postalCodeInputHasError ? classes.invalid : ""
   }`
 
-  console.log(nameInputHasError)
-
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
