@@ -33,6 +33,7 @@ const useInput = (validateValue) => {
 
   const inputBlurHandler = (event) => {
     dispatch({ type: 'BLUR' });
+    console.log(initialInputState.isTouched)
   };
 
   const reset = () => {

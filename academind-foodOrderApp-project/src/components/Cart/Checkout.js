@@ -1,9 +1,8 @@
-
 import useInput from "../../hooks/use-input";
 import classes from "./Checkout.module.scss";
 
 // helper functions
-const isEmpty = (value) => value.trim() === "";
+const isNotEmpty = (value) => value.trim() !== "";
 const isNotFiveChars = (value) => value.trim().length !== 5;
 
 const Checkout = (props) => {
@@ -11,21 +10,19 @@ const Checkout = (props) => {
     value: enteredName,
     isValid: enteredNameIsValid,
     hasError: nameInputHasError,
-    valueChangeHandler: 
-      nameChangedHandler,
-    inputBlurHandler: nameBlurHandler ,
-    reset: resetNameInput ,
-  } = useInput(isEmpty);
+    valueChangeHandler: nameChangedHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
+  } = useInput(isNotEmpty);
 
   const {
     value: enteredStreet,
     isValid: enteredStreetIsValid,
     hasError: streetInputHasError,
-    valueChangeHandler: 
-      streetChangeHandler,
-    inputBlurHandler: streetBlurHandler ,
-    reset: resetStreetInput ,
-  } = useInput(isEmpty);
+    valueChangeHandler: streetChangeHandler,
+    inputBlurHandler: streetBlurHandler,
+    reset: resetStreetInput,
+  } = useInput(isNotEmpty);
 
   const {
     value: enteredPostalCode,
@@ -40,11 +37,10 @@ const Checkout = (props) => {
     value: enteredCity,
     isValid: enteredCityIsValid,
     hasError: cityInputHasError,
-    valueChangeHandler: 
-      cityChangeHandler,
-    inputBlurHandler: cityBlurHandler ,
-    reset: resetCityInput ,
-  } = useInput(isEmpty);
+    valueChangeHandler: cityChangeHandler,
+    inputBlurHandler: cityBlurHandler,
+    reset: resetCityInput,
+  } = useInput(isNotEmpty);
 
   let formIsValid = false;
 
@@ -52,7 +48,7 @@ const Checkout = (props) => {
     enteredNameIsValid &&
     enteredCityIsValid &&
     enteredStreetIsValid &&
-    enteredPostalCode
+    enteredPostalCodeIsValid
   ) {
     formIsValid = true;
   }
@@ -61,10 +57,7 @@ const Checkout = (props) => {
     event.preventDefault();
 
     if (
-      !enteredNameIsValid &&
-      !enteredStreetIsValid &&
-      !enteredCityIsValid &&
-      !enteredPostalCodeIsValid
+      !formIsValid
     ) {
       return;
     }
@@ -73,7 +66,10 @@ const Checkout = (props) => {
     resetStreetInput();
     resetCityInput();
     resetPostalCodeInput();
+
   }; // confirmHandler()
+
+  console.log(postalCodeBlurHandler)
 
   const nameControlClasses = `${classes.control} ${
     nameInputHasError ? classes.invalid : ""
@@ -89,8 +85,7 @@ const Checkout = (props) => {
 
   const postalCodeControlClasses = `${classes.control} ${
     postalCodeInputHasError ? classes.invalid : ""
-  }`
-
+  }`;
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
@@ -103,7 +98,9 @@ const Checkout = (props) => {
           onBlur={nameBlurHandler}
           value={enteredName}
         />
-        {nameInputHasError && <p className={classes['error-text']}>Please enter a valid name</p>}
+        {nameInputHasError && (
+          <p className={classes["error-text"]}>Please enter a valid name</p>
+        )}
       </div>
       <div className={streetControlClasses}>
         <label htmlFor="street">Street</label>
@@ -114,7 +111,9 @@ const Checkout = (props) => {
           onBlur={streetBlurHandler}
           value={enteredStreet}
         />
-        {streetInputHasError && <p className={classes['error-text']}>Please enter a valid street</p>}
+        {streetInputHasError && (
+          <p className={classes["error-text"]}>Please enter a valid street</p>
+        )}
       </div>
       <div className={postalCodeControlClasses}>
         <label htmlFor="postal">Postal Code</label>
@@ -125,7 +124,11 @@ const Checkout = (props) => {
           onBlur={postalCodeBlurHandler}
           value={enteredPostalCode}
         />
-        {postalCodeInputHasError && <p className={classes['error-text']}>Please enter a valid postal code</p>}
+        {postalCodeInputHasError && (
+          <p className={classes["error-text"]}>
+            Please enter a valid postal code
+          </p>
+        )}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor="city">City</label>
@@ -136,7 +139,9 @@ const Checkout = (props) => {
           onBlur={cityBlurHandler}
           value={enteredCity}
         />
-        {cityInputHasError && <p className={classes['error-text']}>Please enter a valid city</p>}
+        {cityInputHasError && (
+          <p className={classes["error-text"]}>Please enter a valid city</p>
+        )}
       </div>
       <div className={classes.actions}>
         <button type="button" onClick={props.onCancel}>
