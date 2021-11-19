@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 
 import useInput from "../../hooks/use-input";
 import classes from "./Checkout.module.scss";
@@ -16,7 +15,7 @@ const Checkout = (props) => {
       nameChangedHandler,
     inputBlurHandler: nameBlurHandler ,
     reset: resetNameInput ,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(isEmpty);
 
   const {
     value: enteredStreet,
@@ -26,16 +25,16 @@ const Checkout = (props) => {
       streetChangeHandler,
     inputBlurHandler: streetBlurHandler ,
     reset: resetStreetInput ,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(isEmpty);
 
   const {
     value: enteredPostalCode,
     isValid: enteredPostalCodeIsValid,
-    hasError: postalCodeHasError,
+    hasError: postalCodeInputHasError,
     valueChangeHandler: postalCodeChangeHandler,
     inputBlurHandler: postalCodeBlurHandler,
     reset: resetPostalCodeInput,
-  } = useInput((value) => value.trim().length !== 5);
+  } = useInput(isNotFiveChars);
 
   const {
     value: enteredCity,
@@ -45,7 +44,7 @@ const Checkout = (props) => {
       cityChangeHandler,
     inputBlurHandler: cityBlurHandler ,
     reset: resetCityInput ,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput(isEmpty);
 
   let formIsValid = false;
 
@@ -81,15 +80,15 @@ const Checkout = (props) => {
   }`;
 
   const streetControlClasses = `${classes.control} ${
-    cityInputHasError ? classes.invalid : ""
+    streetInputHasError ? classes.invalid : ""
   }`;
 
   const cityControlClasses = `${classes.control} ${
-    streetInputHasError ? classes.invalid : ""
+    cityInputHasError ? classes.invalid : ""
   }`;
 
   const postalCodeControlClasses = `${classes.control} ${
-    streetInputHasError ? classes.invalid : ""
+    postalCodeInputHasError ? classes.invalid : ""
   }`
 
   console.log(nameInputHasError)
@@ -128,7 +127,7 @@ const Checkout = (props) => {
           onBlur={postalCodeBlurHandler}
           value={enteredPostalCode}
         />
-        {postalCodeHasError && <p className={classes['error-text']}>Please enter a valid postal code</p>}
+        {postalCodeInputHasError && <p className={classes['error-text']}>Please enter a valid postal code</p>}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor="city">City</label>
