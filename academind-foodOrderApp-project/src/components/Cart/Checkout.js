@@ -67,7 +67,14 @@ const Checkout = (props) => {
     resetCityInput();
     resetPostalCodeInput();
 
-  }; // confirmHandler()
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet, 
+      city: enteredCity, 
+      postalCode: enteredPostalCode,
+    }) // from the cart.js file
+
+  }; // confirmHandler() --> When form submitted
 
   const nameControlClasses = `${classes.control} ${
     nameInputHasError ? classes.invalid : ""
