@@ -53,20 +53,13 @@ const Checkout = (props) => {
     formIsValid = true;
   }
 
-  console.log(formIsValid)
 
   const confirmHandler = (event) => {
-    console.log('hit')
     event.preventDefault();
-
-    console.log('hit confirmHandler function')
-
 
     if (!formIsValid) {
       return;
     }
-
-    console.log('form is valid')
 
     resetNameInput();
     resetStreetInput();
