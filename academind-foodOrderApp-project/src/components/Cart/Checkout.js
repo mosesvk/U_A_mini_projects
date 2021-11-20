@@ -53,14 +53,20 @@ const Checkout = (props) => {
     formIsValid = true;
   }
 
+  console.log(formIsValid)
+
   const confirmHandler = (event) => {
+    console.log('hit')
     event.preventDefault();
 
-    if (
-      !formIsValid
-    ) {
+    console.log('hit confirmHandler function')
+
+
+    if (!formIsValid) {
       return;
     }
+
+    console.log('form is valid')
 
     resetNameInput();
     resetStreetInput();
@@ -69,11 +75,10 @@ const Checkout = (props) => {
 
     props.onConfirm({
       name: enteredName,
-      street: enteredStreet, 
-      city: enteredCity, 
+      street: enteredStreet,
+      city: enteredCity,
       postalCode: enteredPostalCode,
-    }) // from the cart.js file
-
+    }); // from the cart.js file
   }; // confirmHandler() --> When form submitted
 
   const nameControlClasses = `${classes.control} ${
@@ -152,7 +157,7 @@ const Checkout = (props) => {
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button className={classes.submit} disabled={formIsValid}>
+        <button className={classes.submit} disabled={!formIsValid}>
           Confirm
         </button>
       </div>

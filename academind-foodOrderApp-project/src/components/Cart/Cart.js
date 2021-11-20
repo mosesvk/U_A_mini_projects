@@ -27,6 +27,7 @@ const Cart = (props) => {
 
   const submitOrderHandler = (userData) => {
     // we only need user data because we already get the Cart data above through cartCtx.
+    console.log('hit beginning submitOrderHandler')
 
     fetch('https://react-http-b68b7-default-rtdb.firebaseio.com/orders.json', {
       method: 'POST',
@@ -76,7 +77,7 @@ const Cart = (props) => {
         <span>{totalAmount}</span>
       </div>
       {isCheckout && (
-        <Checkout onSubmit={submitOrderHandler} onCancel={props.onClose} />
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
       )}
       {!isCheckout && modalActions}
     </Modal>
