@@ -5,9 +5,9 @@ const counterReducer = (state = { counter: 0 }, action) => {
     return {
       counter: state.counter + 1,
     };
-  if (action.type === "ICREASEBY5") {
+  if (action.type === "ICREASE") {
     return {
-      counter: state.counter + 5,
+      counter: state.counter + action.amount,
     };
   }
   if (action.type === "DECREMENT") {
@@ -31,5 +31,5 @@ const counterSubscriber = () => {
 store.subscribe(counterSubscriber);
 
 store.dispatch({ type: "INCREMENT" });
-store.dispatch({ type: "INCREASEBY5" });
+store.dispatch({ type: "INCREASE" });
 store.dispatch({ type: "DECREMENT" });
