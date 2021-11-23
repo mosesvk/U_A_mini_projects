@@ -5,7 +5,7 @@ const counterReducer = (state = { counter: 0 }, action) => {
     return {
       counter: state.counter + 1,
     };
-  if (action.type === "ICREASE") {
+  if (action.type === "INCREASE") {
     return {
       counter: state.counter + action.amount,
     };
@@ -28,8 +28,8 @@ const counterSubscriber = () => {
   console.log(latestState);
 };
 
-store.subscribe(counterSubscriber);
+// store.subscribe(counterSubscriber);
 
-store.dispatch({ type: "INCREMENT" });
-store.dispatch({ type: "INCREASE" });
-store.dispatch({ type: "DECREMENT" });
+// store.dispatch({ type: "INCREMENT" });
+// store.dispatch({ type: "INCREASE" });
+// store.dispatch({ type: "DECREMENT" });
