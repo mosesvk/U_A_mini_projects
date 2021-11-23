@@ -23,10 +23,10 @@ const store = createStore(counterReducer);
 
 export default store;
 
-const counterSubscriber = () => {
-  const latestState = store.getState();
-  console.log(latestState);
-};
+// const counterSubscriber = () => {
+//   const latestState = store.getState();
+//   console.log(latestState);
+// };
 
 // store.subscribe(counterSubscriber);
 
