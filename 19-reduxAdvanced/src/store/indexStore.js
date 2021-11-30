@@ -1,1 +1,1 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {createSlice, configureStore} from '@reduxjs/toolkit'
