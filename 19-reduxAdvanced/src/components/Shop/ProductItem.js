@@ -1,19 +1,17 @@
-import { useDispatch } from "react-redux";
-import { cartActions } from "../../store/cart-slice";
+import { useDispatch } from 'react-redux';
 
-import Card from "../UI/Card";
-import classes from "./ProductItem.module.css";
+import { cartActions } from '../../store/cart-slice';
+import Card from '../UI/Card';
+import classes from './ProductItem.module.css';
 
 const ProductItem = (props) => {
+  const dispatch = useDispatch();
+
   const { title, price, description, id } = props;
 
-  const dispatch = useDispatch()
-
   const addToCartHandler = () => {
-  
-
-    // and then send Http request
-    // fetch('firebase-url', { method: 'POST', body: JSON.stringify(newCart) })
+    //and then send Http request
+    //fetch('https://react-http-b68b7-default-rtdb.firebaseio.com/cart.json', { method: 'POST', body: JSON.stringify(newCart) })
 
     dispatch(
       cartActions.addItemToCart({
