@@ -2,9 +2,9 @@
 
 const Welcome = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <h1>Welcome Page</h1>
+    </>
   )
 }
 
