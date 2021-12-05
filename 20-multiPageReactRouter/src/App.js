@@ -11,7 +11,7 @@ function App() {
       <main>
         <Route path="/welcome" component={Welcome} />
         <Route path="/products" component={Products} />
-        <Route path='/product-detail/:productId' component={ProductDetail} />
+        <Route path='/products/:productId' component={ProductDetail} />
       </main>
     </>
   );
