@@ -8,9 +8,9 @@ function App() {
   return (
     <Switch>
       <Route path="/" exact>
-        <Redirect path="/quotes" />
+        <Redirect to="/quotes" />
       </Route>
-      <Route path="/quotes" component={AllQuotes} exact/>
+      <Route path="/quotes" component={AllQuotes} exact />
       <Route path="/quotes/:quoteId" component={QuoteDetail} />
       <Route path="/new-quote" component={NewQuote} />
     </Switch>
