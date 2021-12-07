@@ -1,9 +1,15 @@
-import React from 'react'
+
+import QuoteList from '../components/quotes/QuoteList'
+
+const DUMMY_DATA = [
+  {id: 'q1', author: 'Max', text: 'Learning React is fun!'},
+  {id: 'q2', authr: 'Maximilian', text: 'Learning React is great'}
+]
 
 const AllQuotes = () => {
   return (
     <div>
-      <h1>All Quotes Page</h1>
+      <QuoteList quotes={DUMMY_DATA} />
     </div>
   )
 }
