@@ -10,7 +10,7 @@ function App() {
       <MainHeader/>
       <main>  
         <Switch>
-          <Route path='/'>
+          <Route path='/' exact>
             <Redirect to='/welcome' />
           </Route>
           <Route path="/welcome" component={Welcome} />
