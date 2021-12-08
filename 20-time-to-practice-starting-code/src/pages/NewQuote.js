@@ -5,7 +5,6 @@ const NewQuote = () => {
     console.log(quoteData)
   }
 
-
   return (
     <QuoteForm onAddQuote={addQuoteHandler} />
   )
