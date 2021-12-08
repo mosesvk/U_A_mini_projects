@@ -13,7 +13,7 @@ function App() {
           <Redirect to="/quotes" />
         </Route>
         <Route path="/quotes" component={AllQuotes} exact />
-        <Route path="/quotes/:quote Id" component={QuoteDetail} />
+        <Route path="/quotes/:quoteId" component={QuoteDetail} />
         <Route path="/new-quotes" component={NewQuote} />
       </Switch>
     </Layout>
