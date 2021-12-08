@@ -1,12 +1,14 @@
+import { useHistory } from "react-router";
 
-import QuoteItem from './QuoteItem';
-import classes from './QuoteList.module.css';
+import QuoteItem from "./QuoteItem";
+import classes from "./QuoteList.module.css";
 
 const QuoteList = (props) => {
+  const history = useHistory();
 
   const changeSortingHandler = () => {
-
-  }
+    history.push("/quotes?sort=asc");
+  };
 
   return (
     <>
