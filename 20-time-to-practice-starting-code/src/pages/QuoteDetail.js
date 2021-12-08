@@ -26,7 +26,6 @@ const QuoteDetail = () => {
     <>
       <Link to='/quotes'>Back</Link>
       <HighlightedQuote text={quote.text} author={quote.author} />
-      <p>{params.quoteId}</p>
       <Route path={`/quotes/${params.quotId}/comments`} component={Comments} />
     </>
   );

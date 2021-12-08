@@ -4,6 +4,7 @@ import AllQuotes from "./pages/AllQuotes";
 import QuoteDetail from "./pages/QuoteDetail";
 import NewQuote from "./pages/NewQuote";
 import Layout from "./components/layout/Layout";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/quotes" component={AllQuotes} exact />
         <Route path="/quotes/:quoteId" component={QuoteDetail} />
         <Route path="/new-quotes" component={NewQuote} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </Layout>
   );
