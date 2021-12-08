@@ -9,18 +9,18 @@ const QuoteList = (props) => {
 
   const queryParams = new URLSearchParams(location.search);
 
-  const isSortingAscending = queryParams.get('sort')
+  const isSortingAscending = queryParams.get('sort') === "asc" // this is the 'sort' from the history.push("quotes?sort=asc") => So this will return "asc" since it says "sort=asc"
 
   console.log(location)
 
   const changeSortingHandler = () => {
-    history.push("/quotes?sort=asc");
+    history.push("/quotes?sort=" + (isSortingAscending ? 'desc' : 'asc'));
   };
 
   return (
     <>
       <div className={classes.sorting}>
-        <button onClick={changeSortingHandler}>Sort Ascending</button>
+        <button onClick={changeSortingHandler}>Sort {isSortingAscending ? 'Descending' : 'Ascending'}</button>
       </div>
       <ul className={classes.list}>
         {props.quotes.map((quote) => (
