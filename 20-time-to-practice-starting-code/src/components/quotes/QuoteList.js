@@ -11,7 +11,7 @@ const sortQuotes = (quotes, ascending) => {
       return quoteA.id < quoteB.id ? 1 : -1;
     }
   });
-}; 
+};
 
 const QuoteList = (props) => {
   const history = useHistory();
@@ -19,20 +19,22 @@ const QuoteList = (props) => {
 
   const queryParams = new URLSearchParams(location.search);
 
-  const isSortingAscending = queryParams.get('sort') === "asc" // this is the 'sort' from the history.push("quotes?sort=asc") => So this will return "asc" since it says "sort=asc"
+  const isSortingAscending = queryParams.get("sort") === "asc"; // this is the 'sort' from the history.push("quotes?sort=asc") => So this will return "asc" since it says "sort=asc"
 
-  const sortedQuotes = sortQuotes(props.quotes, isSortingAscending)
-
+  const sortedQuotes = sortQuotes(props.quotes, isSortingAscending);
+  console.log(sortedQuotes)
   console.log(location)
 
   const changeSortingHandler = () => {
-    history.push("/quotes?sort=" + (isSortingAscending ? 'desc' : 'asc'));
+    history.push("/quotes?sort=" + (isSortingAscending ? "desc" : "asc"));
   };
 
   return (
     <>
       <div className={classes.sorting}>
-        <button onClick={changeSortingHandler}>Sort {isSortingAscending ? 'Descending' : 'Ascending'}</button>
+        <button onClick={changeSortingHandler}>
+          Sort {isSortingAscending ? "Descending" : "Ascending"}
+        </button>
       </div>
       <ul className={classes.list}>
         {sortedQuotes.map((quote) => (
