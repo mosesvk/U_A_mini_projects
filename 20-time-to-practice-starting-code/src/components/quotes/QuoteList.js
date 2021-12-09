@@ -1,4 +1,4 @@
-import { useHistory, useLocation } from "react-router";
+import { useHistory, useLocation, useRouteMatch } from "react-router";
 
 import QuoteItem from "./QuoteItem";
 import classes from "./QuoteList.module.css";
@@ -16,17 +16,16 @@ const sortQuotes = (quotes, ascending) => {
 const QuoteList = (props) => {
   const history = useHistory();
   const location = useLocation();
+  const match = useRouteMatch();
 
   const queryParams = new URLSearchParams(location.search);
 
   const isSortingAscending = queryParams.get("sort") === "asc"; // this is the 'sort' from the history.push("quotes?sort=asc") => So this will return "asc" since it says "sort=asc"
 
   const sortedQuotes = sortQuotes(props.quotes, isSortingAscending);
-  console.log(sortedQuotes)
-  console.log(location)
 
   const changeSortingHandler = () => {
-    history.push("/quotes?sort=" + (isSortingAscending ? "desc" : "asc"));
+    history.push(`${match.path}?sort=` + (isSortingAscending ? "desc" : "asc"));
   };
 
   return (

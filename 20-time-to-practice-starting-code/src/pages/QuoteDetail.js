@@ -11,8 +11,7 @@ const DUMMY_DATA = [
 const QuoteDetail = () => {
   const match = useRouteMatch();
   const params = useParams();
-  console.log(params)
-  console.log(match)
+
 
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quoteId);
 
