@@ -7,7 +7,7 @@ const CommentItem = (props) => {
   return (
     <li className={classes.item}>
       <p>{props.text}</p>
-      <button>Delete</button>
+      <button onClick={props.removeComment}>Delete</button>
     </li>
   );
 };

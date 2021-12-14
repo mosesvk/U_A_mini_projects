@@ -17,13 +17,17 @@ const CommentsList = (props) => {
 
   const removeCommentHandler = (event) => {
     event.preventDefault();
-    sendRequest({ quoteId: props.key });
+    console.log(props.id)
+    sendRequest({ quoteId: props.id });
   };
+
+  console.log(props.comments)
 
   return (
     <ul className={classes.comments}>
       {props.comments.map((comment) => (
         <CommentItem
+          id={comment.id}
           key={comment.id}
           text={comment.text}
           removeComment={removeCommentHandler}
