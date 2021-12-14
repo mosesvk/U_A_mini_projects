@@ -6,6 +6,7 @@ import NewCommentForm from "./NewCommentForm";
 import useHttp from "../../hooks/use-http";
 import { getAllComments } from "../../lib/api";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import CommentsList from "./CommentsList";
 
 const Comments = () => {
   const params = useParams();
@@ -34,7 +35,16 @@ const Comments = () => {
     );
   }
 
-  
+  if (status === "completed" && loadedComments && loadedComments.length > 0) {
+    comments = <CommentsList comments={loadedComments} />;
+  }
+
+  if (
+    status === "completed" &&
+    (!loadedComments || loadedComments.length === 0)
+  ) {
+    comments = <h2 className="centered">No Comments Were Added Yet</h2>;
+  }
 
   return (
     <section className={classes.comments}>
