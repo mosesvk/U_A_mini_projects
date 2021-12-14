@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
 
 import classes from "./Comments.module.css";
@@ -23,7 +23,9 @@ const Comments = () => {
     setIsAddingComment(true);
   };
 
-  const addedCommentHandler = () => {};
+  const addedCommentHandler = useCallback(() => {
+    sendRequest(quoteId)
+  }, [sendRequest, quoteId]);
 
   let comments;
 
