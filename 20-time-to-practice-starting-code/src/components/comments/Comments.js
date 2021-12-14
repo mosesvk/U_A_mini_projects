@@ -24,7 +24,12 @@ const Comments = () => {
   };
 
   const addedCommentHandler = useCallback(() => {
-    sendRequest(quoteId)
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId]);
+
+  const removeCommentHandler = useCallback(() => {
+    console.log('hit')
+    sendRequest(quoteId);
   }, [sendRequest, quoteId]);
 
   let comments;
@@ -38,7 +43,12 @@ const Comments = () => {
   }
 
   if (status === "completed" && loadedComments && loadedComments.length > 0) {
-    comments = <CommentsList comments={loadedComments} />;
+    comments = (
+      <CommentsList
+        comments={loadedComments}
+        onRemoveComment={removeCommentHandler}
+      />
+    );
   }
 
   if (

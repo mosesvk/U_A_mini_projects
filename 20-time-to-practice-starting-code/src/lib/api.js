@@ -72,6 +72,23 @@ export async function addComment(requestData) {
   return { commentId: data.name };
 }
 
+export async function removeComment(requestData) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/comments/${requestData.quoteId}.json`, {
+    method: 'DELETE',
+    body: JSON.stringify(requestData.commentData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Could not remove comment.');
+  }
+
+  return { commentId: data.name };
+}
+
 export async function getAllComments(quoteId) {
   const response = await fetch(`${FIREBASE_DOMAIN}/comments/${quoteId}.json`);
 
