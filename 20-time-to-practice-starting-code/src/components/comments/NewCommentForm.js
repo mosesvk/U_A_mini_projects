@@ -8,11 +8,15 @@ import classes from './NewCommentForm.module.css';
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
 
-  const {sendRequest, status} = useHttp(addComment)
+  const {sendRequest, status, error} = useHttp(addComment)
+
+  const {onAddedComment} = props
 
   useEffect(() => {
-
-  }, [])
+    if (status === 'completed' && !error) {
+      onAddedComment();
+    }
+  }, [status, error, onAddedComment])
 
   const submitFormHandler = (event) => {
     event.preventDefault();
@@ -20,7 +24,7 @@ const NewCommentForm = (props) => {
     // optional: Could validate here
     const enteredText = commentTextRef.current.value
 
-    sendRequest({text: enteredText});
+    sendRequest({text: enteredText}, props.quoteId);
   };
 
   return (
