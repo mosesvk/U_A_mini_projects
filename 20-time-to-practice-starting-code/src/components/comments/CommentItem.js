@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router';
 
 import classes from './CommentItem.module.css';
 import useHttp from '../../hooks/use-http';
 import { removeComment } from '../../lib/api';
 
 const CommentItem = (props) => {
+  const params = useParams();
   const {remove} = props
   const { sendRequest, status, error } = useHttp(removeComment);
 
@@ -16,6 +18,7 @@ const CommentItem = (props) => {
 
   const removeCommentHandler = (event) => {
     event.preventDefault();
+    console.log(params)
     sendRequest({quoteId: props.quoteId});
   }
 
