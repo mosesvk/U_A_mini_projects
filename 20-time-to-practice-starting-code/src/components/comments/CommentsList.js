@@ -3,6 +3,7 @@ import classes from './CommentsList.module.css';
 
 const CommentsList = (props) => {
   const remove = props.onRemoveComment;
+
   return (
     <ul className={classes.comments}>
       {props.comments.map((comment) => (
