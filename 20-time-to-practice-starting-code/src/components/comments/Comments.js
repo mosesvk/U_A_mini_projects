@@ -30,6 +30,7 @@ const Comments = () => {
   const removeCommentHandler = useCallback(() => {
     console.log('hit')
     sendRequest(quoteId);
+    console.log(quoteId)
   }, [sendRequest, quoteId]);
 
   let comments;
