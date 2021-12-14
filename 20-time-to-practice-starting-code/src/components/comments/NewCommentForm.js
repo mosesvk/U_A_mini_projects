@@ -7,12 +7,15 @@ import classes from './NewCommentForm.module.css';
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
 
+  const {sendRequest, status} = useHttp(addComment)
+
   const submitFormHandler = (event) => {
     event.preventDefault();
 
     // optional: Could validate here
 
     // send comment to server
+    sendRequest();
   };
 
   return (
