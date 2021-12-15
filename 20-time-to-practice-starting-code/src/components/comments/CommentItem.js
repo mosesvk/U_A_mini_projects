@@ -6,17 +6,16 @@ import { removeComment } from "../../lib/api";
 
 const CommentItem = (props) => {
   const { sendRequest, status, error } = useHttp(removeComment);
-  const { removeComment } = props;
+  const { onRemoveComment } = props;
 
   useEffect(() => {
     if (status === 'completed' && !error){
-      removeComment();
+      onRemoveComment();
     }
-  }, [status, error, removeComment])
+  }, [status, error, onRemoveComment])
 
   const removeCommentHandler = (event) => {
     event.preventDefault();
-    console.log(props.id)
     sendRequest({ quoteId: props.id });
   };
 

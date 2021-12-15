@@ -22,7 +22,7 @@ const CommentsList = (props) => {
           id={comment.id}
           key={comment.id}
           text={comment.text}
-          removeComment={onRemoveComment}
+          onRemoveComment={onRemoveComment}
         />
       ))}
     </ul>
