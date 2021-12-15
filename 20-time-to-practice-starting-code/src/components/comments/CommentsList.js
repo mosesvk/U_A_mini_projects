@@ -15,11 +15,6 @@ const CommentsList = (props) => {
     }
   }, [status, error, onRemoveComment]);
 
-  const removeCommentHandler = (event) => {
-    event.preventDefault();
-    sendRequest({ quoteId: props.id });
-  };
-
   return (
     <ul className={classes.comments}>
       {props.comments.map((comment) => (
@@ -27,7 +22,7 @@ const CommentsList = (props) => {
           id={comment.id}
           key={comment.id}
           text={comment.text}
-          removeComment={removeCommentHandler}
+          removeComment={onRemoveComment}
         />
       ))}
     </ul>
