@@ -17,11 +17,8 @@ const CommentsList = (props) => {
 
   const removeCommentHandler = (event) => {
     event.preventDefault();
-    console.log(props.id)
     sendRequest({ quoteId: props.id });
   };
-
-  console.log(props.comments)
 
   return (
     <ul className={classes.comments}>
