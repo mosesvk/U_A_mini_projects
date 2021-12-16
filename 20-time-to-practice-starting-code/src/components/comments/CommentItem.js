@@ -8,8 +8,8 @@ const CommentItem = (props) => {
   const { sendRequest, status, error } = useHttp(removeComment);
   const { onRemoveComment } = props;
   const match = useRouteMatch();
-  console.log(match.params.quoteId)
-  console.log(props.id)
+  console.log(match.params.quoteId) // -MqXTW2mWShSCu9VHxo1
+  console.log(props.id) // differs every item
 
 
   useEffect(() => {
