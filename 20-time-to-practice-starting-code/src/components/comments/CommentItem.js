@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import { useRouteMatch } from "react-router-dom";
 import classes from "./CommentItem.module.css";
 import useHttp from "../../hooks/use-http";
 import { removeComment } from "../../lib/api";
@@ -7,6 +7,10 @@ import { removeComment } from "../../lib/api";
 const CommentItem = (props) => {
   const { sendRequest, status, error } = useHttp(removeComment);
   const { onRemoveComment } = props;
+  const match = useRouteMatch();
+  console.log(match.params.quoteId)
+  console.log(props.id)
+
 
   useEffect(() => {
     if (status === 'completed' && !error){
