@@ -79,8 +79,7 @@ export async function removeComment(requestData) {
     throw new Error(ref.message || 'Could not remove comment.');
   }
   else {
-    console.log(ref)
-    console.log(requestData.quoteId)
+    console.log(requestData)
     ref.child(`${requestData.quoteId}`).remove();
   }
 }
