@@ -20,7 +20,7 @@ const CommentItem = (props) => {
 
   const removeCommentHandler = (event) => {
     event.preventDefault();
-    sendRequest({ quoteId: props.id });
+    sendRequest({ commentId: props.id, quoteId: match.params.quoteId });
   };
 
   return (
