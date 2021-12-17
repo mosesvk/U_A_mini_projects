@@ -1,14 +1,14 @@
 import { useRef, useEffect } from "react";
 
 import useHttp from "../../hooks/use-http";
-import { addComment, getAllComments } from "../../lib/api";
+import { addComment } from "../../lib/api";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./NewCommentForm.module.css";
 
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
 
-  const { data: loadedComments } = useHttp(getAllComments);
+  //const { data: loadedComments } = useHttp(getAllComments);
   const { sendRequest, status, error } = useHttp(addComment);
 
   const { onAddedComment } = props;
