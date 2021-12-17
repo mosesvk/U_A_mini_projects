@@ -73,7 +73,9 @@ export async function addComment(requestData) {
 }
 
 export async function removeComment(requestData) {
-  const ref = await fetch(`${FIREBASE_DOMAIN}/comments/${requestData.quoteId}.json`);
+  const ref = await fetch(`${FIREBASE_DOMAIN}/comments/${requestData.quoteId}/${requestData.commentData}.json`, {
+    method: 'DELETE'
+  });
 
   if (!ref.ok) {
     throw new Error(ref.message || 'Could not remove comment.');
