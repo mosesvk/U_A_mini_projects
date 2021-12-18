@@ -74,7 +74,11 @@ export async function addComment(requestData) {
 
 export async function removeComment(requestData) {
   const ref = await fetch(`${FIREBASE_DOMAIN}/comments/${requestData.quoteId}/${requestData.commentData}.json`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    body: JSON.stringify(requestData.commentData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   if (!ref.ok) {
