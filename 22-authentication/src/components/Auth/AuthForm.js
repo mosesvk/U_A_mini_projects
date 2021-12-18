@@ -18,6 +18,23 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     // optional: add validation
+
+    if (isLogin) {
+
+    } else {
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAUdu_d4BySCbyRc13evo7wV1t56-OM4Wk', 
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          email: enteredEmail,
+          password: enteredPassword,
+          returnSecureToken: true
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })     
+    }
   };
 
   return (
