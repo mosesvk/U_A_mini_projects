@@ -1,9 +1,10 @@
-import { useRef } from 'react';
-
+import { useRef, useContext } from 'react';
+import AuthContext from '../../store/auth-context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
   const newPasswordRef = useRef();
+  const authCtx = useContext(AuthContext)
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -12,7 +13,7 @@ const ProfileForm = () => {
     fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAUdu_d4BySCbyRc13evo7wV1t56-OM4Wk', {
       method: 'POST', 
       body: JSON.stringify({
-        idToken, 
+        idToken: authCtx.token, 
         password,
         returnSecureToken,
       }),
