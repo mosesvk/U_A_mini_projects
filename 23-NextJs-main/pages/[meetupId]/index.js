@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId  } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
@@ -19,8 +19,8 @@ export const getStaticPaths = async () => {
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
-  const meetups = await meetupsCollection.find({}, { _id: 1 });
-  client.close()
+  const meetups = await meetupsCollection.find({}, { _id: 1 }).toArray();
+  client.close();
 
   return {
     fallback: false,
@@ -38,13 +38,21 @@ export const getStaticProps = async (context) => {
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
-  const selectedMeetup = await meetupsCollection.findOne({_id: ObjectId(meetupId)})
+  const selectedMeetup = await meetupsCollection.findOne({
+    _id: ObjectId(meetupId),
+  });
 
   client.close();
 
   return {
     props: {
-      meetupData: selectedMeetup
+      meetupData: {
+        id: selectedMeetup._id.toString(),
+        title: selectedMeetup.title,
+        address: selectedMeetup.address,
+        image: selectedMeetup.image,
+        description: selectedMeetup.description,
+      },
     },
   };
 };
