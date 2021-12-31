@@ -1,5 +1,5 @@
 {
-  "name": "23-practice",
+  "name": "23-practice-nextjs",
   "private": true,
   "scripts": {
     "dev": "next dev",

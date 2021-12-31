@@ -1,12 +1,12 @@
-// our-domain.com/
+// our-domain.com
 
-const HomePage = () => {
+const MainPage = () => {
 
   return (
     <div>
-      <h1>the Home Page</h1>
+      <h1>The Main Page</h1>
     </div>
   )
 }
 
-export default HomePage
+export default MainPage
