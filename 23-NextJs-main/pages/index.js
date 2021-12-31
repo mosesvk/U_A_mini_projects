@@ -1,33 +1,15 @@
 import { MongoClient } from "mongodb";
 import MeetupList from "../components/meetups/MeetupList";
 
-const DUMMY_MEETUPS = [
-  {
-    id: "m1",
-    title: "Chinatown",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/7/75/San_Francisco_China_Town_MC.jpg",
-    address: "870 Washington St, San Francisco, CA 94108",
-    description: "Chinatown in San Francisco, CA",
-  },
-  {
-    id: "m2",
-    title: "Times Square",
-    image: "https://wallpaperaccess.com/full/232905.jpg",
-    address: "Manhattan, NY 10036",
-    description: "Times Square in Manhattan, NY",
-  },
-];
-
 const HomePage = (props) => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+  return <MeetupList meetups={props.meetups} />;
 };
 
 // this is instead of using useState and useEffect in the HomePage function. 
-export const getStaticProps = async() => {
+export const getStaticProps = async  () => {
 
-  const client = MongoClient.connect('mongodb+srv://mosesvk:Lukifanga2656@cluster0.4gc6f.mongodb.net/meetups?retryWrites=true&w=majority')
-  const db = client.json()
+  const client = await MongoClient.connect('mongodb+srv://mosesvk:Lukifanga2656@cluster0.4gc6f.mongodb.net/meetups?retryWrites=true&w=majority')
+  const db = client.db()
   const meetupsCollection = db.collection('meetups');
   const meetups = await meetupsCollection.find().toArray()
 
@@ -38,7 +20,8 @@ export const getStaticProps = async() => {
       meetups: meetups.map(meetup => ({
         title: meetup.title,
         address: meetup.address, 
-        image: meetup.image
+        image: meetup.image, 
+        id: meetup._id.toString()
       }))
     }, 
     revalidate: 10, 
