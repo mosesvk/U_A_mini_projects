@@ -1,5 +1,4 @@
-import { setLazyProp } from "next/dist/next-server/server/api-utils";
-import { useEffect, useState } from "react";
+
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -20,15 +19,20 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-const HomePage = () => {
-  const [loadedMeetups, setLoadedMeetups] = useState([])
-
-  useEffect(() => {
-    //send http request and fetch data
-    setLoadedMeetups(DUMMY_MEETUPS)
-  }, [setLoadedMeetups])
-
+const HomePage = (props) => {
   return <MeetupList meetups={DUMMY_MEETUPS} />;
 };
+
+// this is instead of using useState and useEffect in the HomePage function. 
+export async function getStaticProps() {
+  // fetch data from an API 
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS
+    }, 
+    revalidate: 10, 
+    // number of seconds NextJs will take before taking anymore incoming data requests
+  }
+}
 
 export default HomePage;
