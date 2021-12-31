@@ -1,7 +1,8 @@
+import Layout from '../components/layout/Layout'
 import MeetupList from '../components/meetups/MeetupList'
 
 const DUMMY_MEETUPS = [
-  {
+  { 
     id: 'm1', 
     title: 'Chinatown',
     image:'https://upload.wikimedia.org/wikipedia/commons/7/75/San_Francisco_China_Town_MC.jpg',
@@ -20,7 +21,9 @@ const DUMMY_MEETUPS = [
 const HomePage = () => {
 
   return (
-    <MeetupList meetups={DUMMY_MEETUPS} />
+    <Layout>
+      <MeetupList meetups={DUMMY_MEETUPS} />
+    </Layout>
   )
 }
 
