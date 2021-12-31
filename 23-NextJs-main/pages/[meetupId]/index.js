@@ -1,6 +1,6 @@
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
-const MeetupDetails = () => {
+const MeetupDetails = (props) => {
   return (
     <MeetupDetail
       image="https://upload.wikimedia.org/wikipedia/commons/7/75/San_Francisco_China_Town_MC.jpg"
@@ -36,7 +36,7 @@ export const getStaticProps = async (context) => {
   console.log(meetupId);
 
   return {
-    meetupData: {
+    props: {
       image:
         "https://upload.wikimedia.org/wikipedia/commons/7/75/San_Francisco_China_Town_MC.jpg",
       id: "m1",
