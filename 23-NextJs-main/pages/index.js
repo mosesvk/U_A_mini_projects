@@ -1,4 +1,4 @@
-
+import { MongoClient } from "mongodb";
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -24,11 +24,22 @@ const HomePage = (props) => {
 };
 
 // this is instead of using useState and useEffect in the HomePage function. 
-export async function getStaticProps() {
-  // fetch data from an API 
+export const getStaticProps = async() => {
+
+  const client = MongoClient.connect('mongodb+srv://mosesvk:Lukifanga2656@cluster0.4gc6f.mongodb.net/meetups?retryWrites=true&w=majority')
+  const db = client.json()
+  const meetupsCollection = db.collection('meetups');
+  const meetups = await meetupsCollection.find().toArray()
+
+  client.close();
+
   return {
     props: {
-      meetups: DUMMY_MEETUPS
+      meetups: meetups.map(meetup => ({
+        title: meetup.title,
+        address: meetup.address, 
+        image: meetup.image
+      }))
     }, 
     revalidate: 10, 
     // number of seconds NextJs will take before taking anymore incoming data requests
