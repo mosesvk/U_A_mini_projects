@@ -1,3 +1,5 @@
+import { setLazyProp } from "next/dist/next-server/server/api-utils";
+import { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -19,6 +21,13 @@ const DUMMY_MEETUPS = [
 ];
 
 const HomePage = () => {
+  const [loadedMeetups, setLoadedMeetups] = useState([])
+
+  useEffect(() => {
+    //send http request and fetch data
+    setLoadedMeetups(DUMMY_MEETUPS)
+  }, [setLoadedMeetups])
+
   return <MeetupList meetups={DUMMY_MEETUPS} />;
 };
 
