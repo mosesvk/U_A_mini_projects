@@ -1,4 +1,4 @@
-import Head from 'next/js'
+import Head from 'next/head'
 import { MongoClient, ObjectId } from "mongodb";
 
 import MeetupDetail from "../../components/meetups/MeetupDetail";
