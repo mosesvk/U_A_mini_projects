@@ -12,10 +12,10 @@ function App() {
         <a
           className="App-link"
           href="https://reactjs.org"
-          target="_blank"
+          tar get="_blank"
           rel="noopener noreferrer"
         >
-          Learn Vue JS
+          Learn React
         </a>
       </header>
     </div>
