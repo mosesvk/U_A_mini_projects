@@ -35,6 +35,8 @@
       age: number
     }[]; // this is wanting an an array of multiple objects
 
+// Type Inference
+
     
 
 
