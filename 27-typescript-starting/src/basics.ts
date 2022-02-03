@@ -15,25 +15,23 @@
     
     isInstructor = false
 
-  // Complex
+  // Complex / Type Aliases
     let hobbies: string[];
 
     hobbies = ['bball', 'cooking']
 
-    let person: {
+    type Person = {
       name: string,
       age: number
     };
 
+    let person: Person;
     person = {
       name: 'Max', 
       age: 32
     }
 
-    let people: {
-      name: string,
-      age: number
-    }[]; 
+    let people: Person[]; 
     // this is wanting an an array of multiple objects instead of just 
 
 // Type Inference
@@ -42,5 +40,13 @@
 
   // course = true
     // the above code will show an error because on line 41, typescript already 
+
+// Union Types
+
+  let courses: string | number = 'react JS Courses'
+
+  courses = 3
+
+
 
 
