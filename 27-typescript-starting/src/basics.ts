@@ -57,6 +57,17 @@
       console.log(value)
     }
 
+// Generics 
 
+  function insertAtBeginning<T>(array: T[], value: T) {
+    const newArray = [value, ...array];
+    return newArray;
+  }
 
+  const demoArray = [1, 2, 3]
 
+  const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
+
+  // updatedArray[0].split('')
+  // the above code will show a CODE BECAUSE the array of numbers CANNOT be split. 
+  // if we DIDN'T have the <T> code on line 62, then Typescript would NOT be able to detect the error. We would only find the code AFTER development on the server. 
