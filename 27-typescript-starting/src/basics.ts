@@ -33,7 +33,8 @@
     let people: {
       name: string,
       age: number
-    }[]; // this is wanting an an array of multiple objects
+    }[]; 
+    // this is wanting an an array of multiple objects instead of just 
 
 // Type Inference
 
