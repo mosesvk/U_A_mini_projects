@@ -38,6 +38,9 @@
 
 // Type Inference
 
-    
+  let course = 'React JS course'
+
+  // course = true
+    // the above code will show an error because on line 41, typescript already 
 
 
