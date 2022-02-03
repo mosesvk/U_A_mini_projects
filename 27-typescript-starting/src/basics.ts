@@ -70,4 +70,5 @@
 
   // updatedArray[0].split('')
   // the above code will show a CODE BECAUSE the array of numbers CANNOT be split. 
-  // if we DIDN'T have the <T> code on line 62, then Typescript would NOT be able to detect the error. We would only find the code AFTER development on the server. 
+  // if we DIDN'T have the <T> code on line 62, then Typescript would NOT be able to detect the error. We would only find the code AFTER development on the server.  
+  // We are telling Typescript that the array and value in the function, HAVE to be the SAME. Whether we try to add onto an array of numbers or a new array of strings.
