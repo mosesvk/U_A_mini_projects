@@ -6,7 +6,7 @@ import classes from '../styles/Todos.module.css'
 
 const Todos: React.FC<{ items: Todo[] }> = (props) => {
   return (
-    <ul className={classes.list} >
+    <ul className={classes.todos} >
       {props.items.map((item) => (
         <TodoItem key={item.id} text={item.text} />
       ))}
