@@ -1,8 +1,10 @@
-import { useRef } from 'react';
-
+import { useRef, useContext } from 'react';
+import { TodosContext } from '../store/todos-context';
 import classes from '../styles/NewTodo.module.css';
 
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+const NewTodo: React.FC = () => {
+  const todosCtx = useContext(TodosContext)
+
   // the HTMLInputElement is one of many other HTML types like <HTMLButtonElement> or <HTMLAnchorElement>
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
@@ -19,7 +21,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
       return;
     }
 
-    props.onAddTodo(enteredText);
+    todosCtx.addTodo(enteredText);
   };
 
   return (
